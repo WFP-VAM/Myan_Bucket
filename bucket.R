@@ -4,11 +4,13 @@
 sample_size = 19 # Size of sample
 number_of_positives = c(0:sample_size) # Number of observed positives
 p.low = 0.03 # First p
-th.lo = 0.05 # Lowest bound of confidence intervall
-th.hi = 0.95 # Highest bound of confidence intervall
+confidence_level = "0.95%"
 
-if (th.lo == 0.10 & th.hi == 0.90 ){confidence_level = '0.90%'}
-if (th.lo == 0.05 & th.hi == 0.95){confidence_level = '0.95%'}
+
+if (confidence_level == "0.90%"){th.lo = 0.05
+                                th.hi = 0.95 }
+if (confidence_level == "0.95%"){th.lo = 0.025
+                                th.hi = 0.975}
 
 #### Functions
 x_trunc = function(x){
@@ -28,7 +30,7 @@ y_trunc = function(curve){
 }
 
 
-# First draw our first binomial over which we will loop
+#### First draw our first binomial over which we will loop
 
 lowest_binomial = pbinom(number_of_positives, 
                          sample_size, 
@@ -37,6 +39,7 @@ lowest_binomial = pbinom(number_of_positives,
 x.lowest = x_trunc(lowest_binomial) # Number of positives corresponding to p.low
 x.max = max(x.lowest) # Biggest number of positives covered by p.low
 
+# Plot the binomial
 plot(6,6,type="n",axes=TRUE, ann=FALSE,
      xlim=c(0, sample_size),ylim = seq(0,1), 
      xaxs="i",yaxs="i") 
@@ -50,6 +53,9 @@ title(xlab= 'Number of positives',
                     sample_size, confidence_level ))
 
 lines(x.lowest, y_trunc(lowest_binomial), col='red')
+
+
+#### Generate the directly following binomials without overlapping
 
 bucket.count = 1  # Number of bucket created
 for (p in seq(p.low, 1, by=0.01)){
