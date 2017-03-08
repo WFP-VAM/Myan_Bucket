@@ -29,4 +29,4 @@ First we have to choose :
 
 And then we construct non-overlapping binomial CDFs truncated following our level of confidence.
 
-!(plot19for95.png)
+![](https://github.com/WFP-VAM/Myan_Bucket/blob/master/plot19for95.png)
