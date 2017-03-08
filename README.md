@@ -19,7 +19,7 @@ In more mathematical words : given the number of success in a sample, what is th
 
 We want to construct bucket of the number of people considered as positives, each bucket corresponding to a certain prevalence p at a xx% level of confidence.
 
-Example : if we have drawn seven people positives out of a sample of 19, we aim to show that this proportion refers to a prevalence of 40% with a 95% confidence.
+Example : if we have drawn 5 people positives out of a sample of 19, we aim to show that this proportion refers to a prevalence of 20% with a 95% confidence.
 
 ### Implementation : 
 
